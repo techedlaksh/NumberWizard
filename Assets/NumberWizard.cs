@@ -7,7 +7,7 @@ public class NumberWizard : MonoBehaviour {
     // Use this for initialization
     int max;
     int min;
-    int guess;
+    public int guess;
     int maxGuessAllowed = 5;
     public Text text;
 
@@ -20,25 +20,20 @@ public class NumberWizard : MonoBehaviour {
     {
         max = 1000;
         min = 1;
-        guess = 500;
         max = max + 1;
-        min = min - 1;
+        NextGuess();
     }
 
     void NextGuess()
     {
-        guess = (max + min) / 2;
+        //guess = (max + min) / 2;
+        guess = Random.Range(min, max);
         text.text = guess.ToString();
         maxGuessAllowed -= 1;
         if(maxGuessAllowed <= 0)
         {
             Application.LoadLevel("Win");
         }
-    }
-
-    void Again()
-    {
-        print("Wanna play again?");
     }
 
     // Update is called once per frame
@@ -55,17 +50,6 @@ public class NumberWizard : MonoBehaviour {
         {
             Application.LoadLevel("Lose");    
         }
-        else if (Input.GetKeyDown(KeyCode.Y))
-        {
-            print("Yes!");
-            StartGame();
-        }
-        else if (Input.GetKeyDown(KeyCode.N))
-        {
-            print("No!");
-            print("Thank you for playing!");
-        }
-
     }
 
     public void GuessHigher()
