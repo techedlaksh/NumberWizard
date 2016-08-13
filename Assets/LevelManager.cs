@@ -11,6 +11,7 @@ public class LevelManager : MonoBehaviour {
 
     public void StopLevel(string name)
     {
-        Debug.Log("Level Stopped " + name);
+        Debug.Log("I want to quit!");
+        Application.Quit();
     }
 }
